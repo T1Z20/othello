@@ -156,12 +156,12 @@ def mostrar_resultado(tablero):
 
 def jugar(tablero, color_inicial, color_jugador, nivel):
     turno = color_inicial # color actual
-
+    estado = True
     print("\nTablero actual:")
     imprimir_tablero(tablero)
 
 
-    while True: # bucle de juego 
+    while estado: # bucle de juego 
         print("Turno: ", turno)
         
         movimientos = obtener_movimientos_validos(tablero, turno) # verificamos que el color aca tenga movimientos posibles 
@@ -171,8 +171,9 @@ def jugar(tablero, color_inicial, color_jugador, nivel):
             otro = "B" if turno == "N" else "N"
             movimientos = obtener_movimientos_validos(tablero, otro)
             if len( movimientos) == 0: #si tampoco tiene la partida termino.
+                estado = False # salimos del bucle 
                 print("\nFin de la partida.")
-                break
+                continue
             else: # en caso contrario se pasa de turno
                 print("No hay movimientos posibles, se pasa el turno.")
                 turno = otro
