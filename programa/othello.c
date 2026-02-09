@@ -163,10 +163,10 @@ for(int f=0; f<8; f++) // recorre  fila
 
     // posiciones iniciales del othello 
 
-tablero[3][3] = 'N'; 
-tablero[4][4] = 'N'; 
-tablero[3][4] = 'B'; 
-tablero[4][3] = 'B'; 
+tablero[3][3] = 'B'; 
+tablero[4][4] = 'B'; 
+tablero[3][4] = 'N'; 
+tablero[4][3] = 'N'; 
 
 
 }
@@ -284,9 +284,16 @@ void aplicar_jugada(char tablero[8][8], posicion jugada, lista_de_cambios cambio
 
 // recorre el tablero y imprime el mismo
 
-void mostrartablero(char tablero[8][8]){
+void mostrartablero(char tablero[8][8]) {
     printf("\n");
+    
+  
+    printf("  A B C D E F G H\n"); 
+
     for (int f = 0; f < 8; f++) {
+
+        printf("%d ", f + 1);
+
         for (int c = 0; c < 8; c++) {
             printf("%c ", tablero[f][c]); 
         }
