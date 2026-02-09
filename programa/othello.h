@@ -27,7 +27,7 @@ typedef struct {
 jugador tomar_jugador(char *renglon);
 int validar_jugador(jugador j);
 char tomar_color_inicial(char *renglon);
-int valdiar_color_inicial(char color); 
+int validar_color_inicial(char color); 
 int cargar_encabezado(FILE *archivo, jugador *j1, jugador *j2, char *turno_inicial);
 int validar_encabezado(jugador j1, jugador j2, char turno_inicial);
 

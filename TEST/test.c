@@ -93,13 +93,13 @@ void test_tomar_color_inicial() {
     assert(tomar_color_inicial("") == '\0');
 }
 
-void test_valdiar_color_inicial() {
+void test_validar_color_inicial() {
     
-    assert(valdiar_color_inicial('B') == 1);
+    assert(validar_color_inicial('B') == 1);
 
-    assert(valdiar_color_inicial('N') == 1);
+    assert(validar_color_inicial('N') == 1);
 
-    assert(valdiar_color_inicial('X') == 0);
+    assert(validar_color_inicial('X') == 0);
 
 }
 
@@ -202,7 +202,7 @@ int main() {
     test_tomar_jugada();
     test_validar_jugada();
     test_tomar_color_inicial();
-    test_valdiar_color_inicial();
+    test_validar_color_inicial();
     test_coordenada_en_rango();
     test_validar_cambios();
     test_tiene_movimientos_validos();

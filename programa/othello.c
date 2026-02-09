@@ -37,10 +37,12 @@ jugador tomar_jugador(char *renglon) {
 int validar_jugador(jugador j){
 
     if (j.nombre[0] == '\0') { // verifica que no este vacio 
+        printf("El nombre del jugador no puede estar vacio.\n");
         return 0;
     }
 
     if (j.color != 'B' && j.color != 'N') { // verifica que el color sea valido 
+        printf("El color debe ser B o N , sin espacios y junto a la coma.\n");
         return 0;
     }
 
@@ -90,13 +92,14 @@ char tomar_color_inicial( char *renglon){
     return color;
 }
 
-//valdiar_color_inicial(char)-> int (0/1)
+//validar_color_inicial(char)-> int (0/1)
 //verifica que el color tomado por color inicial sea valido 
 
-int valdiar_color_inicial(char color){
+int validar_color_inicial(char color){
 
 if (color != 'B' && color != 'N')
 {
+    printf("El color debe ser B o N. \n");
     return 0;
 }
 
@@ -116,15 +119,23 @@ int cargar_encabezado(FILE *archivo, jugador *j1, jugador *j2, char *turno_inici
     char buffer[MAX_NOMBRE + 5];
 
     //  jugador 1
-    if (fgets(buffer, MAX_NOMBRE + 5, archivo) == NULL) return 0;
+    if (fgets(buffer, MAX_NOMBRE + 5, archivo) == NULL) {
+        printf("Error al leer el jugador 1.\n");
+        return 0; }
     *j1 = tomar_jugador(buffer); 
 
-    //  jugador 2
-    if (fgets(buffer, MAX_NOMBRE + 5, archivo) == NULL) return 0;
+    // Jugador 2
+    if (fgets(buffer, MAX_NOMBRE + 5, archivo) == NULL) {
+        printf("Error al leer el jugador 2.\n");
+        return 0;
+    }
     *j2 = tomar_jugador(buffer);
 
-    //  color inicial
-    if (fgets(buffer, MAX_NOMBRE + 5, archivo) == NULL) return 0;
+    // Color inicial 
+    if (fgets(buffer, MAX_NOMBRE + 5, archivo) == NULL) {
+        printf("Error al leer el color inicial.\n");
+        return 0;
+    }
     *turno_inicial = tomar_color_inicial(buffer);
 
     return 1; // Ninguna lectura presento problemas , mas no significa que los datos sean validos .
@@ -142,11 +153,12 @@ int validar_encabezado(jugador j1, jugador j2, char turno_inicial) {
 
     // verificar que los colores no sean iguales 
     if (j1.color == j2.color) {
+        printf("Los colores de los jugadores deben ser distintos");
         return 0; // Error: Ambos jugadores eligieron el mismo color
     }
 
     // validar que el turno inicial 
-    if (valdiar_color_inicial(turno_inicial) == 0) return 0;
+    if (validar_color_inicial(turno_inicial) == 0) return 0;
 
     return 1; // nignun problema.
 }
